@@ -1,0 +1,63 @@
+<div class="container">
+  <!--Grid row-->
+  <div class="row mt-5">
+    <!--Grid column-->
+    <div class="col-md-6 mb-5 mt-md-0 mt-5 white-text text-center text-md-left">
+      <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Sign in right now! </h1>
+      <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+      <h6 class="mb-3 wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing
+        elit. Rem repellendus quasi fuga
+        nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi non animi ea
+        dolor molestiae, quisquam iste, maiores. Nulla.</h6>
+      <a mdbBtn color="white" outline="true" mdbWavesEffect class="wow fadeInLeft" data-wow-delay="0.3s">Learn
+        more</a>
+    </div>
+    <!--Grid column-->
+    <!--Grid column-->
+    <div class="col-md-6 col-xl-5 mb-4">
+      <!--Form-->
+      <mdb-card class="wow fadeInRight" data-wow-delay="0.3s">
+        <mdb-card-body>
+          <!--Header-->
+          <div class="text-center">
+            <h3 class="white-text">
+              <mdb-icon fas icon="user" class="white-text"></mdb-icon> Register:</h3>
+            <hr class="hr-light">
+          </div>
+          <!--Body-->
+
+          <form class="text-center" style="color: #757575;" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <h3 class="font-weight-bold my-4 pb-2 text-center dark-grey-text">Log In</h3>
+            <!-- Name -->
+            <div class="form-group">
+              <input type="email" class="form-control mb-4" placeholder="Email" formControlName="username" required >
+              <div *ngIf="username.invalid && (username.dirty || username.touched)" class="error">
+                  <div *ngIf="username.errors">
+                    Username is required.
+                  </div>
+                </div>
+            </div>
+            <!-- Email -->
+              <div class="form-group">
+                  <input type="password" formControlName="password" class="form-control" placeholder="Password" >
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error">
+                      <div *ngIf="password.errors">
+                        Password is required.
+                      </div>
+                    </div>
+              </div>
+            <small id="passwordHelpBlock" class="form-text text-right blue-text">
+              <a href="">Recover Password</a>
+            </small>
+            <div class="text-center">
+              <button type="button" class="btn btn-outline-warning btn-rounded waves-effect" type="submit" [disabled]="!loginForm.valid">Login</button>
+            </div>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
+      <!--/.Form-->
+    </div>
+    <!--Grid column-->
+  </div>
+  <!--Grid row-->
+</div>

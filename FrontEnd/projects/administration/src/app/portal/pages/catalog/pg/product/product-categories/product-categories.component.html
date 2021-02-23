@@ -1,0 +1,208 @@
+<div class="">
+    <div class="row">
+        <div class="col-sm-4">
+            <!-- Category -->
+            <div class="single category">
+                <h3 class="side-title">Category</h3>
+                
+                <ul class="list-unstyled" *ngIf="hasCategory">
+                    <li *ngFor="let el of categoryList; let i=index">
+                        <a href="javascript:void(0)" title="" (click)="getSubCategory(el._id)">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <span class="col-md-7 ">
+                                        {{el.name}}
+                                    </span>
+                                    <div class="col-md-4" style="float:right">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <span class="badge badge-success" *ngIf="el.status==='Active'">
+                                                    {{el.status}}
+                                                </span>
+                                                <span class="badge badge-warning" *ngIf="el.status==='InActive'">
+                                                    {{el.status}}
+                                                </span>
+                                                <span class="badge badge-danger" *ngIf="el.status==='DeActivate'">
+                                                    {{el.status}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="switch" *ngIf="el.status=='Active'; else elseBlock">
+                                                    <label>
+                                                      <input type="checkbox" (change)="updateCategoryStatus(el._id)" checked>
+                                                      <span class="lever"></span> 
+                                                    </label>
+                                                </div>
+                                                <ng-template #elseBlock>
+                                                  <div class="switch" >
+                                                    <label>
+                                                      <input type="checkbox" (change)="updateCategoryStatus(el._id)">
+                                                      <span class="lever"></span> 
+                                                    </label>
+                                                </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled" *ngIf="!hasCategory">
+                    <li>
+                        No Category Found.
+                    </li>
+                </ul>
+           </div>
+        </div>
+        <div class="col-sm-4" *ngIf="showSubCategory">
+            <!-- Category -->
+            <div class="single category">
+                <h3 class="side-title">Sub Category<span class="pull-right"><button style="margin-top: -10px;" class="btn btn-primary btn-sm" (click)="openAddSubcategory()">Add SubCategory</button></span></h3>
+                <ul class="list-unstyled" *ngIf="hasSubCategory">
+                    <li *ngFor="let el of subCategory; let i=index">
+                        <a href="javascript:void(0)" title="" (click)="getSubCategoryList(el._id)">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <span class="col-md-7 ">
+                                        {{el.name}}
+                                    </span>
+                                    <div class="col-md-4" style="float:right">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <span class="badge badge-success" *ngIf="el.status==='Active'">
+                                                    {{el.status}}
+                                                </span>
+                                                <span class="badge badge-warning" *ngIf="el.status==='InActive'">
+                                                    {{el.status}}
+                                                </span>
+                                                <span class="badge badge-danger" *ngIf="el.status==='DeActivate'">
+                                                    {{el.status}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="switch" *ngIf="el.status=='Active'; else elseBlock">
+                                                    <label>
+                                                      <input type="checkbox" (change)="updateSubCategoryStatus(el._id)" checked>
+                                                      <span class="lever"></span> 
+                                                    </label>
+                                                </div>
+                                                <ng-template #elseBlock>
+                                                  <div class="switch" >
+                                                    <label>
+                                                      <input type="checkbox" (change)="updateSubCategoryStatus(el._id)">
+                                                      <span class="lever"></span> 
+                                                    </label>
+                                                </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled" *ngIf="!hasSubCategory">
+                    <li>
+                        No Sub Category Found.
+                    </li>
+                </ul>
+           </div>
+        </div>
+        <div class="col-sm-4" *ngIf="showSubCategoryList">
+            <div class="single category">
+                <h3 class="side-title">Sub-Category List <span class="pull-right"><button style="margin-top: -10px;" class="btn btn-primary btn-sm" (click)="openAddSubcategoryList()">Add SubCategory List</button></span></h3>
+                <ul class="list-unstyled" *ngIf="hasSubCategoryList">
+                    <li *ngFor="let el of subCategoryList; let i=index">
+                        <a href="javascript:void(0)" title="" >
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <span class="col-md-7 ">
+                                        {{el.name}}
+                                    </span>
+                                    <div class="col-md-4" style="float:right">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <span class="badge badge-success" *ngIf="el.status==='Active'">
+                                                    {{el.status}}
+                                                </span>
+                                                <span class="badge badge-warning" *ngIf="el.status==='InActive'">
+                                                    {{el.status}}
+                                                </span>
+                                                <span class="badge badge-danger" *ngIf="el.status==='DeActivate'">
+                                                    {{el.status}}
+                                                </span>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="switch" *ngIf="el.status=='Active'; else elseBlock">
+                                                    <label>
+                                                      <input type="checkbox" (change)="updateSubCategoryListStatus(el._id)" checked>
+                                                      <span class="lever"></span> 
+                                                    </label>
+                                                </div>
+                                                <ng-template #elseBlock>
+                                                  <div class="switch" >
+                                                    <label>
+                                                      <input type="checkbox" (change)="updateSubCategoryListStatus(el._id)">
+                                                      <span class="lever"></span> 
+                                                    </label>
+                                                </div>
+                                                </ng-template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="list-unstyled" *ngIf="!hasSubCategoryList">
+                    <li>
+                        No Sub Category List Found.
+                    </li>
+                </ul>
+           </div>
+        </div>
+       
+    <!--
+        <div class="col-sm-4" *ngIf="showSubCategoryList">
+            <div class="single category">
+                <h3 class="side-title">Sub-Category List <span class="pull-right"><button style="margin-top: -10px;" class="btn btn-primary" (click)="openAddSubcategoryList()">Add SubCategory List</button></span></h3>
+                <ul class="list-unstyled" *ngIf="hasSubCategoryList">
+                    <li *ngFor="let el of subCategoryList; let i = index;">
+                        <a href="javascript:void(0)" title="">
+                            {{el.name}} 
+                            <span class="pull-right">
+                                <div class="switch" *ngIf="el.status=='Active'; else elseBlock">
+                                    <label>
+                                      <input type="checkbox" (change)="updateStatus(el._id)" checked>
+                                      <span class="lever"></span> 
+                                    </label>
+                                </div>
+                                <ng-template #elseBlock>
+                                  <div class="switch" >
+                                    <label>
+                                      <input type="checkbox" (change)="updateStatus(el._id)">
+                                      <span class="lever"></span> 
+                                    </label>
+                                </div>
+                                </ng-template>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul *ngIf="!hasSubCategoryList">
+                    <li>
+                        No Sub Category Found.
+                    </li>
+                </ul>
+            </div>
+        </div> -->
+    </div>
+
+     
+</div>

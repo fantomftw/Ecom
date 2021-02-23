@@ -1,0 +1,23 @@
+<h2 class="text-mute">
+    {{heading | uppercase}}
+</h2>
+<mdb-card>
+    <mdb-card-body>
+      <!-- This is some text within a panel body. -->
+      <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmmit()">
+        <input type="hidden" formControlName="_id">
+
+        <div class="md-form" >
+            <angular-editor mdbInput class="mdb-textarea" mdbValidate formControlName="description"  [config]="editorConfig"></angular-editor>
+            <mdb-error *ngIf="description.invalid && (description.dirty || description.touched)"></mdb-error>
+            <mdb-success *ngIf="description.valid && (description.dirty || description.touched)"></mdb-success>
+        </div>
+        
+        <button type="submit" mdbWavesEffect [disabled]="!aboutUsForm.valid" class="btn btn-info  ml-0 float-right z-depth-0 my-4 waves-effect" >
+            {{buttonName}}
+            <i class="far fa-paper-plane ml-2"></i>
+        </button>
+        <!-- {{this.aboutUsForm.value | json}} -->
+      </form>
+    </mdb-card-body>
+  </mdb-card>

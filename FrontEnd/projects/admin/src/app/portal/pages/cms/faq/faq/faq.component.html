@@ -1,0 +1,56 @@
+
+<div class="row">
+    <div class="col-md-8">
+        <div class=" mt-3">
+            <h2 class="text-mute">
+                {{heading | uppercase}}
+            </h2>      
+        </div>
+    </div>
+    <div class="col-md-4 mx-auto">
+        <div class="col-md-6 float-right">
+            <div class="md-form ">
+                <button type="button" mdbBtn color="default" rounded="true" [routerLink]="['/cms/faq/create']" routerLinkActive="router-link-active"  mdbWavesEffect>
+                    Add FAQ
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" *ngFor="let faq of faqList; let i = index">
+
+    <div class="col-md-6" ng-if="changeOdd(i); else elseBlock">
+        <mdb-accordion [multiple]="false">
+            <mdb-accordion-item [collapsed]="true" >
+              <mdb-accordion-item-head>Collapsible Group Item #1</mdb-accordion-item-head>
+              <mdb-accordion-item-body (animationStateChange)="onAnimationStateChange($event)">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
+                beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable
+                VHS.
+              </mdb-accordion-item-body>
+            </mdb-accordion-item>
+          </mdb-accordion>
+    </div>
+    <ng-template #elseBlock>
+    <div class="col-md-6">
+        <mdb-accordion [multiple]="false">
+            <mdb-accordion-item [collapsed]="true" >
+              <mdb-accordion-item-head>Collapsible Group Item #1</mdb-accordion-item-head>
+              <mdb-accordion-item-body (animationStateChange)="onAnimationStateChange($event)">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
+                beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable
+                VHS.
+              </mdb-accordion-item-body>
+            </mdb-accordion-item>
+          </mdb-accordion>
+    </div>
+    </ng-template>
+</div>

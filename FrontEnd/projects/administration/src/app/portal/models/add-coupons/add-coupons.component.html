@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title w-100" id="myModalLabel">{{title}}</h4>
+  </div><form class="text-center" style="color: #757575;" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+        <div class="md-form mt-3">
+            <input type="text" formControlName="code" id="materialContactFormName" class="form-control" mdbInput mdbValidate  />
+            <label for="materialContactFormName">Code</label>
+            <mdb-error *ngIf="code.invalid && (code.dirty || code.touched)" >Input invalid</mdb-error>
+            <mdb-success *ngIf="code.valid && (code.dirty || code.touched)">Input valid</mdb-success>
+        </div>
+        <div class="md-form mt-3">
+            <mdb-select-2 [multiple]="true" placeholder="Choose Category" label="Category" formControlName="cat">
+                <mdb-select-all-option>Select all</mdb-select-all-option>
+                <mdb-select-option *ngFor="let option of data" [value]="option._id">{{ option.name }}</mdb-select-option>
+            </mdb-select-2>
+        </div>
+        <div class="md-form mt-3">
+            <mdb-select-2 [multiple]="true" placeholder="Choose Sub Category" label="Sub Category" formControlName="subCat">
+                <mdb-select-all-option >Select all</mdb-select-all-option>
+                <mdb-select-option   *ngFor="let option of data" [value]="option._id">{{ option.name || noData }} </mdb-select-option>
+            </mdb-select-2>
+        </div>
+        <div class="md-form mt-3">
+            <mdb-select-2 [multiple]="true" placeholder="Choose Sub Category List" label="Sub Category List" formControlName="subCatList">
+                <mdb-select-all-option >Select all</mdb-select-all-option>
+                <mdb-select-option   *ngFor="let option of data" [value]="option._id">{{ option.name || noData }} </mdb-select-option>
+            </mdb-select-2>
+        </div>
+
+        <div class="md-form mt-3">
+            <mdb-select-2 [multiple]="true" placeholder="Choose Brand" label="Brands" formControlName="brand">
+                <mdb-select-all-option >Select all</mdb-select-all-option>
+                <mdb-select-option   *ngFor="let option of data" [value]="option._id">{{ option.name || noData }} </mdb-select-option>
+            </mdb-select-2>
+        </div>
+
+        <div class="md-form mt-3">
+            <mdb-select-2 [multiple]="true" placeholder="Choose Trends" label="Trends" formControlName="trend">
+                <mdb-select-all-option >Select all</mdb-select-all-option>
+                <mdb-select-option   *ngFor="let option of data" [value]="option._id">{{ option.name || noData }} </mdb-select-option>
+            </mdb-select-2>
+        </div>
+
+        {{this.contactForm.value | json}}
+    </div>
+<div class="modal-footer">
+<button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="modalRef.hide()" mdbWavesEffect>Close</button>
+<button type="submit" [disabled]="!contactForm.valid" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save!</button>
+</div>
+</form>

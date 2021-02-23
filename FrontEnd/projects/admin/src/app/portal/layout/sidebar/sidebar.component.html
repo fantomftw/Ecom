@@ -1,0 +1,263 @@
+
+<!-- <a id="show-sidebar" class="btn btn-sm btn-dark mt-1" href="javascript:void(0)">
+  <i class="fas fa-bars"></i>
+</a>  -->
+<nav id="sidebar" class="sidebar-wrapper">
+      
+    <div class="sidebar-content">
+      <div class="sidebar-brand ml-4">
+        <a href="javascript:void(0)" >
+          <!-- <img src="assets/logo-02.png" height="100px"> -->
+          MumMeals
+        </a>
+        <div id="close-sidebar" >
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            alt="User picture">
+        </div>
+        <div class="user-info">
+          <span class="user-name">{{currentUser.data.email}}
+          </span>
+          <span class="user-role">{{currentUser.data.roles}}</span>
+          <span class="user-status">
+            <i class="fa fa-circle"></i>
+            <span>Online</span>
+          </span>
+        </div>
+      </div>
+      <!-- sidebar-header  -->
+      <!-- <div class="sidebar-search">
+        <div>
+          <div class="input-group">
+            <input type="text" class="form-control search-menu" placeholder="Search...">
+            <div class="input-group-append">
+              <span class="input-group-text">
+                <i class="fa fa-search" aria-hidden="true"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul>
+          <!-- <li class="header-menu">
+            <span>General</span>
+          </li> -->
+          <li >
+            <a href="javascript:void(0)" [routerLink]="['/dashboard']" routerLinkActive="active" >
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Dashboard</span>
+              <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" [routerLink]="['/user']" routerLinkActive="active" >
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Users</span>
+              <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+            </a>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="javascript:void(0)">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Menu</span>
+              <!-- <span class="badge badge-pill badge-warning">New</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/menu/cuisine']" routerLinkActive="active" >
+                    Add Cuisine
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/menu']" routerLinkActive="active" >
+                    Menu List
+                  </a>
+                </li>
+                
+                
+                <!-- <li>
+                    <a href="javascript:void(0)" [routerLink]="['/cms/contact-us']" routerLinkActive="active" >
+                        Contact Us
+                    </a>
+                </li> -->
+              </ul>
+            </div>
+          </li>
+          
+          <li class="sidebar-dropdown">
+            <a href="javascript:void(0)">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Restaurant</span>
+              <!-- <span class="badge badge-pill badge-warning">New</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/restaurant/register']" routerLinkActive="active" >
+                    Add Restaurant
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/restaurant']" routerLinkActive="active" >
+                    Restaurant List
+                  </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" [routerLink]="['/restaurant/enquiry']" routerLinkActive="active" >
+                        Restaurant Enquiry
+                    </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="javascript:void(0)">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>CMS</span>
+              <!-- <span class="badge badge-pill badge-warning">New</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/cms/about-us']" routerLinkActive="active" >
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/cms/faq']" routerLinkActive="active" >
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" [routerLink]="['/cms/contact-us']" routerLinkActive="active" >
+                        Contact Us
+                    </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a href="javascript:void(0)">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>App Settings</span>
+              <!-- <span class="badge badge-pill badge-warning">New</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/cms/appLinks']" routerLinkActive="active" >
+                    App Links
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/cms/email']" routerLinkActive="active" >
+                    Email Settings
+                  </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)" [routerLink]="['/cms/sms']" routerLinkActive="active" >
+                        SMS Settings
+                    </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          
+          <li>
+            <a href="javascript:void(0)" [routerLink]="['/vouchers']" routerLinkActive="active" >
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Vouchers</span>
+              <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+            </a>
+          </li>
+          <!-- <li class="sidebar-dropdown">
+            <a href="javascript:void(0)">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Customer Management</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/customer']" routerLinkActive="active" >Customer List
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li> -->
+
+          <!-- <li class="sidebar-dropdown">
+            <a href="javascript:void(0)">
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Settings</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/settings/village']" routerLinkActive="active" >
+                    Village
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/settings/zone']" routerLinkActive="active" >
+                    Zone
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/settings/construction-type']" routerLinkActive="active">
+                    Construction Type
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" [routerLink]="['/setting/construction-type']" routerLinkActive="active" >Dashboard 3</a>
+                </li>
+              </ul>
+            </div>
+          </li> -->
+          <!-- <li>
+            <a href="javascript:void(0)" [routerLink]="['/order']" routerLinkActive="active" >
+              <i class="fa fa-shopping-cart"></i>
+              <span>Orders</span>
+            </a>
+          </li> -->
+          
+
+          <!-- <li>
+            <a href="javascript:void(0)" [routerLink]="['/setting']" routerLinkActive="active" >
+              <i class="fa fa-tachometer-alt"></i>
+              <span>Settings</span>
+            </a>
+          </li> -->
+              <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+         
+        
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+    <!-- sidebar-content  -->
+    <div class="sidebar-footer">
+      <a href="javascript:void(0)">
+        <i class="fa fa-bell"></i>
+        <span class="badge badge-pill badge-warning notification">3</span>
+      </a>
+      <a href="javascript:void(0)">
+        <i class="fa fa-envelope"></i>
+        <span class="badge badge-pill badge-success notification">7</span>
+      </a>
+      <a href="javascript:void(0)">
+        <i class="fa fa-cog"></i>
+        <span class="badge-sonar"></span>
+      </a>
+      <a href="javascript:void(0)">
+        <i class="fa fa-power-off"></i>
+      </a>
+    </div>
+  </nav>

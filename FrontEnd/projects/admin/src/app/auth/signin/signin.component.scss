@@ -1,0 +1,23 @@
+@media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+      background: #3f51b5 !important;
+    }
+  }
+  
+  .rgba-gradient {
+    background: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+    background: -webkit-gradient(linear, 45deg, from(rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%));
+    background: linear-gradient(to 45deg, rgba(0, 0, 0, 0.7), rgba(72, 15, 144, 0.4) 100%);
+  }
+  
+  .card {
+    background-color: rgba(54, 54, 57, 0.65)
+  }
+  
+  .md-form label {
+    color: #ffffff;
+  }
+  
+  h6 {
+    line-height: 1.7;
+  }

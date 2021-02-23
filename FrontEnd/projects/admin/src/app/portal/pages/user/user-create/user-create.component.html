@@ -1,0 +1,43 @@
+<form class="text-center" style="color: #757575;" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="md-form mb-4">
+          <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+          <input type="text" [formControl]="name" class="form-control"
+                 mdbInput mdbValidate>
+          <label for="defaultForm-email">Name</label>
+          <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+          </mdb-error>
+          <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+          </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+          <!-- <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon> -->
+          <input type="text" [formControl]="contact" class="form-control"
+                 mdbInput mdbValidate>
+          <label for="defaultForm-pass">Mobile Number</label>
+          <mdb-error *ngIf="contact.invalid && (contact.dirty || contact.touched)">
+          </mdb-error>
+          <mdb-success *ngIf="contact.valid && (contact.dirty || contact.touched)">
+          </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+          <!-- <mdb-icon fas icon="lock" class="prefix grey-text"></mdb-icon> -->
+          <input type="text" [formControl]="email" class="form-control"
+          mdbInput mdbValidate>
+          <label for="defaultForm-pass">Email</label>
+          <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">
+          </mdb-error>
+          <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">
+          </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+          <mdb-select-2 [formControl]="roles" placeholder="Choose Role / Designation" label="Role / Designation" (ngModelChange)="getSelectedRoleValue($event)" [ngModel]="selectedRoleValue">
+            <mdb-select-option *ngFor="let role of roleList" [value]="role">{{ role }} </mdb-select-option>
+          </mdb-select-2>
+        </div>
+
+        <input type="hidden" formControlName="status">
+        <input type="hidden" formControlName="_id">
+        <!-- {{this.userForm.value | json}} -->
+      <button type="button" mdbBtn color="secondary" class="waves-light"  mdbWavesEffect>Close</button>
+      <button type="submit" mdbBtn color="primary" class="relative waves-light" [disabled]="!userForm.valid" mdbWavesEffect >Save!</button>
+    </form>

@@ -1,0 +1,79 @@
+<h2 class="text-mute">
+    {{heading | uppercase}}
+</h2>
+<mdb-card>
+    <mdb-card-body>
+      <!-- This is some text within a panel body. -->
+      <form [formGroup]="appLinksForm" (ngSubmit)="onSubmmit()">
+        <input type="hidden" formControlName="_id">
+        Android Play Store Links
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="android_admin" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Admin</label>
+            <mdb-error *ngIf="android_admin.invalid && (android_admin.dirty || android_admin.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="android_admin.valid && (android_admin.dirty || android_admin.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="android_vendor" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Vendor</label>
+            <mdb-error *ngIf="android_vendor.invalid && (android_vendor.dirty || android_vendor.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="android_vendor.valid && (android_vendor.dirty || android_vendor.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="android_user" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">User</label>
+            <mdb-error *ngIf="android_user.invalid && (android_user.dirty || android_user.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="android_user.valid && (android_user.dirty || android_user.touched)">
+            </mdb-success>
+        </div>
+        <br>
+        IOS Store Links
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="ios_admin" class="form-control"
+            mdbInput mdbValidate>
+            <label for="defaultForm-email">Admin</label>
+            <mdb-error *ngIf="ios_admin.invalid && (ios_admin.dirty || ios_admin.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="ios_admin.valid && (ios_admin.dirty || ios_admin.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="ios_vendor" class="form-control"
+            mdbInput mdbValidate>
+            <label for="defaultForm-email">Vendor</label>
+            <mdb-error *ngIf="ios_vendor.invalid && (ios_vendor.dirty || ios_vendor.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="ios_vendor.valid && (ios_vendor.dirty || ios_vendor.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="ios_user" class="form-control"
+            mdbInput mdbValidate>
+            <label for="defaultForm-email">User</label>
+            <mdb-error *ngIf="ios_user.invalid && (ios_user.dirty || ios_user.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="ios_user.valid && (ios_user.dirty || ios_user.touched)">
+            </mdb-success>
+        </div>
+        <button type="submit" mdbWavesEffect [disabled]="!appLinksForm.valid" class="btn btn-info  ml-0 float-right z-depth-0 my-4 waves-effect" >
+            {{buttonName}}
+            <i class="far fa-paper-plane ml-2"></i>
+        </button>
+        <!-- {{this.appLinksForm.value | json}} -->
+      </form>
+    </mdb-card-body>
+  </mdb-card>

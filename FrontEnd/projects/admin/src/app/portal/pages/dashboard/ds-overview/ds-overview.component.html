@@ -1,0 +1,123 @@
+
+
+<div _ngcontent-c4="" class="row">
+    <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+       <div _ngcontent-c4="" class="card border-0 rounded-0">
+          <div _ngcontent-c4="" class="card-body">
+             <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fas fa-dollar-sign"></i></div>
+                <div _ngcontent-c4="" class="ml-auto">
+                   <p _ngcontent-c4="" class="card-label text-right text-muted">Revenue</p>
+                   <h4 _ngcontent-c4="" class="card-text text-right ">0</h4>
+                </div>
+             </div>
+          </div>
+          <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">Since last month</small><small _ngcontent-c4="" class="text-success ml-auto"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-caret-up"></i> 5,35% </small></div>
+       </div>
+    </div>
+    <!-- <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+       <div _ngcontent-c4="" class="card border-0 rounded-0">
+          <div _ngcontent-c4="" class="card-body">
+             <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-shopping-cart"></i></div>
+                <div _ngcontent-c4="" class="ml-auto">
+                   <p _ngcontent-c4="" class="card-label text-right text-muted">Water Consumption Monthly (liter)</p>
+                   <h4 _ngcontent-c4="" class="card-text text-right ">0</h4>
+                </div>
+             </div>
+          </div>
+          <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">Since last month</small><small _ngcontent-c4="" class="text-success ml-auto"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-caret-up"></i> 8,66% </small></div>
+       </div>
+    </div> -->
+    <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+       <div _ngcontent-c4="" class="card border-0 rounded-0">
+          <div _ngcontent-c4="" class="card-body" [routerLink]="['/restaurant']" routerLinkActive="router-link-active" >
+             <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-users"></i></div>
+                <div _ngcontent-c4="" class="ml-auto">
+                   <p _ngcontent-c4="" class="card-label text-right text-muted">Restaurant</p>
+                   <h4 _ngcontent-c4="" class="card-text text-right ">{{totalRestaurant}}</h4>
+                </div>
+             </div>
+          </div>
+          <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">InActive : {{totalRestaurant-activeRestaurant}}</small><small _ngcontent-c4="" class="text-danger ml-auto"> Deactivate : {{deactivateRestaurant}}  </small></div>
+       </div>
+    </div>
+    <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+       <div _ngcontent-c4="" class="card border-0 rounded-0">
+          <div _ngcontent-c4="" class="card-body">
+             <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-heartbeat"></i></div>
+                <div _ngcontent-c4="" class="ml-auto">
+                   <p _ngcontent-c4="" class="card-label text-right text-muted">Commission</p>
+                   <h4 _ngcontent-c4="" class="card-text text-right "> 0</h4>
+                </div>
+             </div>
+          </div>
+          <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">Since last month</small><small _ngcontent-c4="" class="text-success ml-auto"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-caret-up"></i> 1,74% </small></div>
+       </div>
+    </div>
+
+    <!-- <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+          <div _ngcontent-c4="" class="card border-0 rounded-0">
+                <div _ngcontent-c4="" class="card-body" [routerLink]="['/branch']" routerLinkActive="router-link-active" >
+                <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                      <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-users"></i></div>
+                      <div _ngcontent-c4="" class="ml-auto">
+                      <p _ngcontent-c4="" class="card-label text-right text-muted">Branches</p>
+                      <h4 _ngcontent-c4="" class="card-text text-right ">{{totalBranch}}</h4>
+                      </div>
+                </div>
+                </div>
+                <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">InActive : {{totalBranch-activeBranch}}</small><small _ngcontent-c4="" class="text-danger ml-auto"> Deactivate : {{deactivateBranch}}  </small></div>
+
+          </div>
+    </div> -->
+
+    <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+          <div _ngcontent-c4="" class="card border-0 rounded-0">
+                <div _ngcontent-c4="" class="card-body" [routerLink]="['/user']" routerLinkActive="router-link-active" >
+                <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                      <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-users"></i></div>
+                      <div _ngcontent-c4="" class="ml-auto">
+                      <p _ngcontent-c4="" class="card-label text-right text-muted">Employees</p>
+                      <h4 _ngcontent-c4="" class="card-text text-right ">{{totalUsers}}</h4>
+                      </div>
+                </div>
+                </div>
+                <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">InActive : {{totalUsers-activeUser}}</small><small _ngcontent-c4="" class="text-danger ml-auto"> Deactivate :  </small></div>
+          </div>
+    </div>
+
+    <!-- <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+          <div _ngcontent-c4="" class="card border-0 rounded-0">
+                <div _ngcontent-c4="" class="card-body"  >
+                <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                      <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-users"></i></div>
+                      <div _ngcontent-c4="" class="ml-auto">
+                      <p _ngcontent-c4="" class="card-label text-right text-muted">Construction Types</p>
+                      <h4 _ngcontent-c4="" class="card-text text-right ">{{totalConstructionType}}</h4>
+                      </div>
+                </div>
+                </div>
+                <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">InActive : {{totalConstructionType-activeConstructionType}}</small><small _ngcontent-c4="" class="text-danger ml-auto"> Deactivate : {{deactivateConstructionType}}  </small></div>
+
+          </div>
+    </div>
+    <div _ngcontent-c4="" class="col-md-6 col-lg-3 mb-4">
+          <div _ngcontent-c4="" class="card border-0 rounded-0">
+                <div _ngcontent-c4="" class="card-body" [routerLink]="['/settings/zone']" routerLinkActive="router-link-active" >
+                <div _ngcontent-c4="" class="card-innerBody d-flex align-items-center">
+                      <div _ngcontent-c4="" class="card-icon text-light"><i _ngcontent-c4="" aria-hidden="true" class="fa fa-users"></i></div>
+                      <div _ngcontent-c4="" class="ml-auto">
+                      <p _ngcontent-c4="" class="card-label text-right text-muted">Zones</p>
+                      <h4 _ngcontent-c4="" class="card-text text-right ">{{totalZone}}</h4>
+                      </div>
+                </div>
+                </div>
+                <div _ngcontent-c4="" class="card-footer d-flex "><small _ngcontent-c4="" class="text-muted">InActive : {{totalZone-activeZone}}</small><small _ngcontent-c4="" class="text-danger ml-auto"> Deactivate : {{deactivateZone}}  </small></div>
+          </div>
+    </div> -->
+ </div>
+ 
+ 

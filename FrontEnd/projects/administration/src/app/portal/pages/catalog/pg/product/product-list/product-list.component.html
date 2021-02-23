@@ -1,0 +1,157 @@
+<div class="mt-4 " style="margin-bottom:100px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-4 mt-4 pull-right">
+                <button class="pull-right" mdbBtn color="primary" [routerLink]="['/catalog/product/new']" routerLinkActive="router-link-active" >Add New Product</button>
+                <!-- (click)="openModal()" -->
+            </div>
+        </div>
+    </div>
+    <!-- {{this.elements|json}} -->
+
+    <!-- {{this.elements|json}} -->
+    <div class="row mt-3 mb-5" style="margin-bottom: 100px;">
+      <table mdbTable striped="true" hover="true" stickyHeader="true" class="z-depth-1" *ngIf="tableStatus">
+        <thead>
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+          </tr>
+        </thead>
+        <tbody mdbTableCol *ngFor="let el of elements; let i = index">
+          <tr>
+            <td scope="row">
+              <button type="button" mdbBtn color="danger" class="master-button" mdbWavesEffect *ngIf="el.collapsed" (click)="el.collapsed = !el.collapsed">
+                <mdb-icon fas icon="angle-down"></mdb-icon>
+              </button>
+              <button type="button" mdbBtn color="success" class="master-button" mdbWavesEffect *ngIf="!el.collapsed" (click)="el.collapsed = !el.collapsed">
+                <mdb-icon fas icon="angle-right"></mdb-icon>
+              </button>
+              <span class="ml-1">{{ i+1 }}</span>
+            </td>
+            <td>{{ el.name }}<br><small>{{ el.title }}</small></td>
+            <td>{{ el.category_[0].name }}</td>
+            <td>{{ el.trend_[0].name }}</td>
+            <td>{{ el.brand_[0].name }}</td>
+            <td>
+              <span class="badge badge-success" *ngIf="el.status==='Active'">
+                {{el.status}}
+            </span>
+            <span class="badge badge-warning" *ngIf="el.status==='InActive'">
+                {{el.status}}
+            </span>
+            <span class="badge badge-danger" *ngIf="el.status==='DeActivate'">
+                {{el.status}}
+            </span>
+            </td>
+            <td>
+              <div class="row">
+                <a class="ml-2" (click)="view(el._id)">
+                    <mdb-icon far icon="eye"></mdb-icon>
+                </a >
+                <a class="ml-2" (click)="edit(el._id)">
+                    <mdb-icon far icon="edit"></mdb-icon>
+                </a>
+                <a class="ml-2" (click)="delete(el._id)">
+                    <mdb-icon far icon="trash-alt"></mdb-icon>
+                </a>
+                
+                <div class="switch" *ngIf="el.status=='Active'; else elseBlock">
+                    <label>
+                      <input type="checkbox" (change)="updateStatus(el._id)" checked>
+                      <span class="lever"></span> 
+                    </label>
+                </div>
+                <ng-template #elseBlock>
+                  <div class="switch" >
+                    <label>
+                      <input type="checkbox" (change)="updateStatus(el._id)">
+                      <span class="lever"></span> 
+                    </label>
+                </div>
+                </ng-template>
+            </div>
+            </td>
+
+
+          </tr>
+          <tr *ngIf="el.collapsed" style="text-align: center; background-color: rgba(0, 0, 0,  0.015)">
+            <td colspan="100%" style="border: 0 !important">
+              <table mdbTable  >
+                <thead class="black white-text">
+                  <tr>
+                    <th *ngFor="let head of masterHeadElements" scope="col">{{ head }}</th>
+                  </tr>
+                </thead>
+                <tbody  *ngFor="let el1 of el.varients">
+                  <tr >
+                    <td class="col-md-2">{{ el1.sku }}</td>
+                    <td class="col-md-1">{{ el1.size }}</td>
+                    <td class="col-md-2">{{ el1.color }}</td>
+                    <td class="col-md-1">{{ el1.mrp }}</td>
+                    <td class="col-md-1">{{ el1.sp }}</td>
+                    <td class="col-md-1">{{ el1.discount }}</td>
+                    <td class="col-md-1">
+                      <mdb-icon fas icon="paperclip" (click)="addImages(el1._id)"></mdb-icon>
+                    </td>
+
+                    <td class="col-md-1">
+                      <span class="badge badge-success" *ngIf="el1.status==='Active'">
+                      {{el1.status}}
+                      </span>
+                      <span class="badge badge-warning" *ngIf="el1.status==='InActive'">
+                          {{el1.status}}
+                      </span>
+                      <span class="badge badge-danger" *ngIf="el1.status==='DeActivate'">
+                          {{el1.status}}
+                      </span>
+                    </td>
+                  <td class="col-md-1 text-center">
+                    <div class="row text-center">
+                      <a class="ml-2" (click)="view(el._id)">
+                          <mdb-icon far icon="eye"></mdb-icon>
+                      </a >
+                      <!-- <a class="ml-2" (click)="edit(el._id)">
+                          <mdb-icon far icon="edit"></mdb-icon>
+                      </a> -->
+                      <a class="ml-2" (click)="delete(el._id)">
+                          <mdb-icon far icon="trash-alt"></mdb-icon>
+                      </a>
+                      
+                      <div class="switch" *ngIf="el.status=='Active'; else elseBlock">
+                          <label>
+                            <input type="checkbox" (change)="updateStatus(el._id)" checked>
+                            <span class="lever"></span> 
+                          </label>
+                      </div>
+                      <ng-template #elseBlock>
+                        <div class="switch" >
+                          <label>
+                            <input type="checkbox" (change)="updateStatus(el._id)">
+                            <span class="lever"></span> 
+                          </label>
+                      </div>
+                      </ng-template>
+                    </div>
+                  </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table mdbTable striped="true" hover="true" stickyHeader="true" class="z-depth-1" *ngIf="!tableStatus">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of headElements" scope="col">{{ head }}</th>
+                </tr>
+            </thead>
+            <tbody mdbTableCol *ngFor="let el of elements">
+                <tr colspan="9" class="text-center">
+                    No Product Listed Yet
+                </tr>
+            </tbody>
+      </table>
+  
+    </div>
+  </div>

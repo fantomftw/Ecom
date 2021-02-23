@@ -1,0 +1,342 @@
+<h2 class="text-mute">
+    {{heading | uppercase}}
+</h2>
+<mdb-card>
+    <mdb-card-body>
+        <form [formGroup]="restaurantForm">
+        <div class="row">
+            <div class="col-md-12">
+                Progress ..
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-12">
+                    General Information
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- Card -->
+                            <mdb-card>
+                                <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 285px;">
+                                    <!-- Card img -->
+                                    <mdb-card-img [src]="image" alt="Card image cap" ></mdb-card-img>
+                                    <a>
+                                        <div class="mask"></div>
+                                    </a>
+                                </div>
+                            </mdb-card>
+                            <!-- Card -->
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="row">
+                                <!-- Grid column -->
+                                <div class="col-md-6 col-lg-6 mb-4">
+
+                                    <!-- Card -->
+                                    <div class="card light-blue lighten-1 white-text" [routerLink]="['/restaurant/'+restaurantId+'/user']" routerLinkActive="router-link-active">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                        <p class="h2-responsive font-weight-bold mt-n2 mb-0">65</p>
+                                        <p class="mb-0">Employees / Users</p>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-user-plus fa-4x text-black-40"></i>
+                                        </div>
+                                    </div>
+                                    <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+                                    </div>
+                                    <!-- Card -->
+                                </div>
+                                <!-- Grid column -->
+
+                                <!-- Grid column -->
+                                <div class="col-md-6 col-lg-6 mb-4">
+                                    <!-- Card -->
+                                    <div class="card warning-color white-text" [routerLink]="['/restaurant/'+restaurantId+'/menu']" routerLinkActive="router-link-active" >
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                        <p class="h2-responsive font-weight-bold mt-n2 mb-0">65</p>
+                                        <p class="mb-0">Menu</p>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-chart-bar fa-4x text-black-40"></i>
+                                        </div>
+                                    </div>
+                                    <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+                                    </div>
+                                    <!-- Card -->
+                                </div>
+                                <!-- Grid column -->
+
+                                                                                  <!-- Grid column -->
+                                <div class="col-md-6 col-lg-6 mb-4">
+
+                                    <!-- Card -->
+                                    <div class="card red accent-2 white-text" [routerLink]="['/restaurant/'+restaurantId+'/order']" routerLinkActive="router-link-active">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                        <p class="h2-responsive font-weight-bold mt-n2 mb-0">65</p>
+                                        <p class="mb-0">Orders</p>
+                                        </div>
+                                        <div>
+                                        <i class="fas fa-chart-pie fa-4x text-black-40"></i>
+                                        </div>
+                                    </div>
+                                    <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+                                    </div>
+                                    <!-- Card -->
+
+                                </div>
+                                <!-- Grid column -->
+                                <div class="col-md-6 col-lg-6 mb-4">
+
+                                    <!-- Card -->
+                                    <div class="card primary-color white-text" [routerLink]="['/restaurant/'+restaurantId+'/revenue']" routerLinkActive="router-link-active">
+                                    <div class="card-body d-flex justify-content-between align-items-center">
+                                        <div>
+                                        <p class="h2-responsive font-weight-bold mt-n2 mb-0">65</p>
+                                        <p class="mb-0">Revenue</p>
+                                        </div>
+                                        <div>
+                                        <i class="fas fa-chart-pie fa-4x text-black-40"></i>
+                                        </div>
+                                    </div>
+                                    <a class="card-footer footer-hover small text-center white-text border-0 p-2">More info<i class="fas fa-arrow-circle-right pl-2"></i></a>
+                                    </div>
+                                    <!-- Card -->
+
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <input type="hidden" formControlName="_id">
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <mdb-icon fas icon="utensils" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="restaurant_name"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Restaurant Name</label>
+                                <mdb-error *ngIf="restaurant_name.invalid && (restaurant_name.dirty || restaurant_name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="restaurant_name.valid && (restaurant_name.dirty || restaurant_name.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <mdb-icon fas icon="utensils" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="cuisine"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Cuisine</label>
+                                <mdb-error *ngIf="cuisine.invalid && (cuisine.dirty || cuisine.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="cuisine.valid && (cuisine.dirty || cuisine.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <mdb-select-2  [multiple]="true" placeholder="Choose Cuisines" label="Cuisine" (ngModelChange)="getSelectedCuisineValue($event)" [ngModel]="selectedCuisineValue">
+                                  <mdb-select-all-option>Select all</mdb-select-all-option>
+                                  <mdb-select-option *ngFor="let option of cuisineList" [value]="option._id">{{ option.name }}</mdb-select-option>
+                                   <mdb-error *ngIf="cuisine.invalid && (cuisine.dirty || cuisine.touched)">
+                                  </mdb-error>
+                                  <mdb-success *ngIf="cuisine.valid && (cuisine.dirty || cuisine.touched)">
+                                  </mdb-success> 
+                                </mdb-select-2>
+                            </div>
+                        </div> -->
+                        <!-- <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <mdb-select-2 [formControl]="item_type" [multiple]="true" placeholder="Choose your Food Type" label="Food Type" (ngModelChange)="getSelectedValue($event)" [ngModel]="selectedValue">
+                                  <mdb-select-all-option>Select all</mdb-select-all-option>
+                                  <mdb-select-option *ngFor="let option of options" [value]="option">{{ option }}</mdb-select-option>
+                                </mdb-select-2>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="row">
+                        Personal Information
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <mdb-icon fas icon="user-alt" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="user_name"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Your Name</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="user_email"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Email</label>
+                                <!-- <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <mdb-icon fas icon="mobile-alt" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="user_contact"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Mobile</label>
+                                <!-- <mdb-error *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="mobile.valid && (mobile.dirty || mobile.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        Contact Information
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="md-form mb-4">
+                                <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="email"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Email</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="md-form mb-4">
+                                <mdb-icon fas icon="phone-square-alt" class="prefix grey-text"></mdb-icon>
+                                
+                                <input type="text" class="form-control" formControlName="contact"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Restaurant Number</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="md-form mb-6">
+                                <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                                <input type="text" class="form-control" formControlName="address"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Restaurant Address</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                                <input type="text" class="form-control" formControlName="city"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">City</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                                <input type="text" class="form-control" formControlName="state"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">State</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="md-form mb-4">
+                                <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                                <input type="text" class="form-control" formControlName="country"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Country</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        Social Profile
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="md-form mb-4">
+                                <mdb-icon fab icon="facebook-square" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="facebook"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Facebook</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="md-form mb-4">
+                                <mdb-icon fab icon="twitter-square" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="twitter"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Twitter</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="md-form mb-4">
+                                <mdb-icon fab icon="instagram" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="instagram"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Instagram</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="md-form mb-4">
+                                <mdb-icon fab icon="whatsapp-square" class="prefix grey-text"></mdb-icon>
+                                <input type="text" class="form-control" formControlName="whatsapp"
+                                       mdbInput mdbValidate>
+                                <label for="defaultForm-email">Whats App</label>
+                                <!-- <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                                </mdb-error>
+                                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                                </mdb-success> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </mdb-card-body>
+</mdb-card>

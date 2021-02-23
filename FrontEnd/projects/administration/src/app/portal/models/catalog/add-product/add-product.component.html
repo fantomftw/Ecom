@@ -1,0 +1,67 @@
+<h1>Add Product</h1>
+<form class="text-center" style="color: #757575;" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="modal-body">
+        <div class="md-form mt-3">
+            <mdb-select-2 placeholder="Choose your Category" formControlName="category" label="Category" (ngModelChange)="getSelectedCategoryValue($event)" [ngModel]="selectedCategoryValue">
+              <mdb-select-option *ngFor="let option of categoryFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+            </mdb-select-2>
+        </div>
+        <div class="md-form mt-3">
+            <mdb-select-2 placeholder="Choose Sub Category" formControlName="subCategory" label="SubCategory" (ngModelChange)="getSelectedSubCategoryValue($event)" [ngModel]="selectedSubCategoryValue">
+                <mdb-select-option *ngFor="let option of subCategoryFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+            </mdb-select-2>
+        </div>
+        <div class="md-form mt-3">
+            <mdb-select-2 placeholder="Choose your product Listing" formControlName="subCategoryList" label="Sub Category List" (ngModelChange)="getSelectedSubCategoryListValue($event)" [ngModel]="selectedSubCategoryListValue">
+                <mdb-select-option *ngFor="let option of subCategoryListFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+            </mdb-select-2>
+        </div>
+        <div class="md-form mt-3">
+            <input type="text" formControlName="name" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+            <label for="materialContactFormName">Name</label>
+            <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)" >Input invalid</mdb-error>
+            <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">Input valid</mdb-success>
+        </div>
+        <div class="md-form mt-3">
+            <input type="text" formControlName="title" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+            <label for="materialContactFormName">Title</label>
+            <mdb-error *ngIf="title.invalid && (title.dirty || title.touched)" >Input invalid</mdb-error>
+            <mdb-success *ngIf="title.valid && (title.dirty || title.touched)">Input valid</mdb-success>
+        </div>
+        <div class="md-form mt-3">
+            <mdb-select-2 placeholder="Choose product Trend" formControlName="trend" label="Trend" (ngModelChange)="getSelectedTrendValue($event)" [ngModel]="selectedTrendValue">
+              <mdb-select-option *ngFor="let option of trendFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+            </mdb-select-2>
+          </div>
+        <div class="md-form mt-3">
+            <mdb-select-2 placeholder="Choose Product Brand" formControlName="brand" label="Brand" (ngModelChange)="getSelectedBrandValue($event)" [ngModel]="selectedBrandValue">
+                <mdb-select-option *ngFor="let option of brandFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+            </mdb-select-2>
+        </div>
+        
+        <!-- <div class="md-form mt-3">
+          <input type="text" formControlName="contact" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+          <label for="materialContactFormName">Mobile Number</label>
+          <mdb-error *ngIf="contact.invalid && (contact.dirty || contact.touched)" >Input invalid</mdb-error>
+          <mdb-success *ngIf="contact.valid && (contact.dirty || contact.touched)">Input valid</mdb-success>
+        </div>
+        
+        <div class="md-form mt-3">
+          <input type="text" formControlName="contact1" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+          <label for="materialContactFormName">Alternate Mobile Number</label>
+          <mdb-error *ngIf="contact1.invalid && (contact1.dirty || contact1.touched)" >Input invalid</mdb-error>
+          <mdb-success *ngIf="contact1.valid && (contact1.dirty || contact1.touched)">Input valid</mdb-success>
+        </div>
+        <div class="md-form mt-3">
+          <input type="text" formControlName="dob" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+          <label for="materialContactFormName">DOB</label>
+          <mdb-error *ngIf="dob.invalid && (dob.dirty || dob.touched)" >Input invalid</mdb-error>
+          <mdb-success *ngIf="dob.valid && (dob.dirty || dob.touched)">Input valid</mdb-success>
+        </div> -->
+        {{contactForm.value | json}}
+    </div>
+<div class="modal-footer">
+<button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="modalRef.hide()" mdbWavesEffect>Close</button>
+<button type="submit" [disabled]="disabledSubmitButton" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save!</button>
+</div>
+</form>

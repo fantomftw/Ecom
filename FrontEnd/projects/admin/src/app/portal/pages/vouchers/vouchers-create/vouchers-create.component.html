@@ -1,0 +1,74 @@
+<form class="text-center" style="color: #757575;" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+        <div class="col-md-4 md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input type="text" [formControl]="code" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Code</label>
+            <mdb-error *ngIf="code.invalid && (code.dirty || code.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="code.valid && (code.dirty || code.touched)">
+            </mdb-success>
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            <mdb-date-picker formControlName="startOn"
+            [inline]="true"
+            name="mydate"
+            [placeholder]="'Selected date'"
+            [(ngModel)]="model"
+            required
+          ></mdb-date-picker>
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            <mdb-date-picker formControlName="endsOn" [inline]="true" name="mydate" [placeholder]="'Selected date'" [(ngModel)]="model" required></mdb-date-picker>
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input type="text" [formControl]="maxReedemAmt" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Max Reedem Amount</label>
+            <mdb-error *ngIf="maxReedemAmt.invalid && (maxReedemAmt.dirty || maxReedemAmt.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="maxReedemAmt.valid && (maxReedemAmt.dirty || maxReedemAmt.touched)">
+            </mdb-success>
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input type="text" [formControl]="minCartValue" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Mininum Cart Amount</label>
+            <mdb-error *ngIf="minCartValue.invalid && (minCartValue.dirty || minCartValue.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="minCartValue.valid && (minCartValue.dirty || minCartValue.touched)">
+            </mdb-success>
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input type="text" [formControl]="value" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Value</label>
+            <mdb-error *ngIf="value.invalid && (value.dirty || value.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="value.valid && (value.dirty || value.touched)">
+            </mdb-success>
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            is all vendor (checkbox) yes no
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            Voucher Scope
+          </div>
+          <div class="col-md-4 md-form mb-4">
+            <mdb-select-2 [formControl]="restaurant_id" placeholder="Choose Restaurant" label="Restaurant" (ngModelChange)="getSelectedRestaurantValue($event)" [ngModel]="selectedRestaurantValue">
+              <mdb-select-option *ngFor="let restaurant of restaurantList" [value]="restaurant._id">{{ restaurant.restaurant_name }} </mdb-select-option>
+            </mdb-select-2>
+          </div>
+      
+    </div>
+
+    <input type="hidden" formControlName="status">
+    <input type="hidden" formControlName="_id">
+    <!-- {{this.userForm.value | json}} -->
+  <button type="button" mdbBtn color="secondary" class="waves-light"  mdbWavesEffect>Close</button>
+  <button type="submit" mdbBtn color="primary" class="relative waves-light" [disabled]="!userForm.valid" mdbWavesEffect >Save!</button>
+</form>

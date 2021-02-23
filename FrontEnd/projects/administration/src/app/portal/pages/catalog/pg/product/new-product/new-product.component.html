@@ -1,0 +1,162 @@
+<mdb-card class="mt-3 mb-5" >
+    <mdb-card-body>
+      <mdb-card-title class="text-center">
+        <h4>Add New Product</h4>
+      </mdb-card-title>
+      <form class="" style="color: #757575;" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+      <mdb-card class="mt-3">
+        <mdb-card-body>
+          <mdb-card-title >
+            <h4>Product Information</h4>
+          </mdb-card-title>
+            <div class="modal-body">
+              <div class="form-row">
+                <div class="md-form mt-3 col-md-6">
+                  <input type="text" formControlName="name" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                  <label for="materialContactFormName">Name</label>
+                  <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)" >Input invalid</mdb-error>
+                  <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">Input valid</mdb-success>
+                </div>
+                <div class="md-form mt-3 col-md-6">
+                  <input type="text" formControlName="title" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                  <label for="materialContactFormName">Title</label>
+                  <mdb-error *ngIf="title.invalid && (title.dirty || title.touched)" >Input invalid</mdb-error>
+                  <mdb-success *ngIf="title.valid && (title.dirty || title.touched)">Input valid</mdb-success>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="md-form mt-3 col-md-4">
+                  <mdb-select-2 placeholder="Choose Category" label="Category" formControlName="category" (ngModelChange)="getCategoryId($event)" [ngModel]="categoryId">
+                    <mdb-select-option *ngFor="let option of categoryListFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+                    <!-- <mdb-select-option class="deep-purple lighten-2 text-white">Add New Category</mdb-select-option> -->
+                    <mdb-error *ngIf="category.invalid && (category.dirty || category.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="category.valid && (category.dirty || category.touched)">Input valid</mdb-success>
+                  </mdb-select-2>
+                </div>
+                <div class="md-form mt-3 col-md-4">
+                  <mdb-select-2 placeholder="Choose Sub Category" label="Sub Category" formControlName="subCategory" (ngModelChange)="getSubCategoryId($event)" [ngModel]="subCategoryId">
+                    <mdb-select-option *ngFor="let option of subCategoryFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+                    <mdb-select-option (click)="openAddSubcategory()" *ngIf="hasCategory" class="deep-purple lighten-2 text-white">Add New Sub Category</mdb-select-option>
+                    <mdb-error *ngIf="subCategory.invalid && (subCategory.dirty || subCategory.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="subCategory.valid && (subCategory.dirty || subCategory.touched)">Input valid</mdb-success>
+                  </mdb-select-2>
+                </div>
+                <div class="md-form mt-3 col-md-4">
+                  <mdb-select-2 placeholder="Choose Sub Category Item" label="Sub Category List" formControlName="subCategoryList" (ngModelChange)="getSubCategoryListId($event)" [ngModel]="subCategoryListId">
+                    <mdb-select-option *ngFor="let option of subCategoryListFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+                    <mdb-select-option (click)="openAddSubcategoryList()" *ngIf="hasSubCategory" class="deep-purple lighten-2 text-white">Add New Sub Category List</mdb-select-option>
+                    <mdb-error *ngIf="subCategoryList.invalid && (subCategoryList.dirty || subCategoryList.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="subCategoryList.valid && (subCategoryList.dirty || subCategoryList.touched)">Input valid</mdb-success>
+                  </mdb-select-2>
+                </div>
+                <div class="md-form mt-3 col-md-6">
+                  <mdb-select-2 placeholder="Choose Brand" label="Brand" formControlName="brand" (ngModelChange)="getBrandId($event)" [ngModel]="brandId">
+                    <mdb-select-option *ngFor="let option of brandFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+                    <mdb-select-option class="deep-purple lighten-2 text-white">Add New Brand</mdb-select-option>
+                    <mdb-error *ngIf="brand.invalid && (brand.dirty || brand.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="brand.valid && (brand.dirty || brand.touched)">Input valid</mdb-success>
+                  </mdb-select-2>
+                </div>
+                <div class="md-form mt-3 col-md-6">
+                  <mdb-select-2 placeholder="Choose Trend" label="Trend" formControlName="trend" (ngModelChange)="getTrendId($event)" [ngModel]="trendId">
+                    <mdb-select-option *ngFor="let option of trendFeed" [value]="option._id">{{ option.name }}</mdb-select-option>
+                    <mdb-select-option class="deep-purple lighten-2 text-white">Add New Trend</mdb-select-option>
+                    <mdb-error *ngIf="trend.invalid && (trend.dirty || trend.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="trend.valid && (trend.dirty || trend.touched)">Input valid</mdb-success>
+                  </mdb-select-2>
+                </div>
+              </div>
+                {{contactForm.value | json}}
+              
+            </div>
+
+        </mdb-card-body>
+      </mdb-card>
+
+      <mdb-card class="mt-3">
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4>Varient Information</h4>
+          </mdb-card-title>
+          <div class="modal-body">
+            <!-- <div formArrayName="selling_points">
+              <div *ngFor="let item of sellingPoints.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                <div class="form-row">
+                  <div class="md-form mt-3 col-md-6">
+                    <input type="text" formControlName="point" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                    <label for="materialContactFormName">Point</label>
+                    <mdb-error *ngIf="point.invalid && (point.dirty || point.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="point.valid && (point.dirty || point.touched)">Input valid</mdb-success>
+                  </div>
+                </div>
+                <label>
+                Selling Point: <input formControlName="point" />
+              </label> 
+              <button type="button" (click)="deleteSellingPoint(pointIndex)">Delete Selling Point</button>
+              </div>
+              <button type="button" (click)="addSellingPoint()">Add Selling Point</button>
+            </div> -->
+
+            <div formArrayName="varients" *ngFor="let creds of varientsArr.controls; let i = index">
+                <div class="form-row" [formGroupName]="i">
+                  <div class="md-form mt-3 col-md-2">
+                    <input type="text" required formControlName="sku" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                    <label for="materialContactFormName">SKU</label>
+                    <!-- <mdb-error *ngIf="point.invalid && (point.dirty || point.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="point.valid && (point.dirty || point.touched)">Input valid</mdb-success> -->
+                  </div>
+                  <div class="md-form mt-3 col-md-2">
+                    <input type="text" required formControlName="size" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                    <label for="materialContactFormName">Size</label>
+                    <!-- <mdb-error *ngIf="point.invalid && (point.dirty || point.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="point.valid && (point.dirty || point.touched)">Input valid</mdb-success> -->
+                  </div>
+                  <div class="md-form mt-3 col-md-2">
+                    <input type="text" required formControlName="color" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                    <label for="materialContactFormName">Color</label>
+                    <!-- <mdb-error *ngIf="point.invalid && (point.dirty || point.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="point.valid && (point.dirty || point.touched)">Input valid</mdb-success> -->
+                  </div>
+                  <div class="md-form mt-3 col-md-2">
+                    <input type="text" required formControlName="mrp" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                    <label for="materialContactFormName">MRP</label>
+                    <!-- <mdb-error *ngIf="point.invalid && (point.dirty || point.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="point.valid && (point.dirty || point.touched)">Input valid</mdb-success> -->
+                  </div>
+                  <div class="md-form mt-3 col-md-2">
+                    <input type="text" required formControlName="sp" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                    <label for="materialContactFormName">SP</label>
+                    <!-- <mdb-error *ngIf="point.invalid && (point.dirty || point.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="point.valid && (point.dirty || point.touched)">Input valid</mdb-success> -->
+                  </div>
+                  <div class="md-form mt-3 col-md-2">
+                    <input type="text" required formControlName="discount" id="materialContactFormName" class="form-control" mdbInput mdbValidate />
+                    <label for="materialContactFormName">Discount</label>
+                    <!-- <mdb-error *ngIf="point.invalid && (point.dirty || point.touched)" >Input invalid</mdb-error>
+                    <mdb-success *ngIf="point.valid && (point.dirty || point.touched)">Input valid</mdb-success> -->
+                  </div>
+                </div>
+                
+
+                <!-- <input placeholder="Username" formControlName="username"> -->
+                <!-- <input placeholder="Password" formControlName="password"> -->
+            </div>
+            <div class="row">
+                  
+              <div class="col-md-12 text-right">
+                <button type="button" mdbBtn class="waves-light" color="info" (click)="addVarients()">Add More Varient</button>
+              </div>
+            </div>
+          </div>
+        </mdb-card-body>
+      </mdb-card>
+
+      <div class="text-right mt-3">
+        <button type="button" mdbBtn color="secondary" class="waves-light" (click)="CancelFunction()" mdbWavesEffect>Close</button>
+        <button type="submit" [disabled]="!contactForm.valid" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save!</button>
+      </div>
+
+    </form>
+    </mdb-card-body>
+  </mdb-card>

@@ -1,0 +1,34 @@
+<h2 class="text-mute">
+    {{heading | uppercase}}
+</h2>
+<mdb-card>
+    <mdb-card-body>
+            <form [formGroup]="faqForm" (ngSubmit)="onSubmit()">
+                <div class="md-form mb-4">
+                    <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                    <input  type="text" [formControl]="name" class="form-control"
+                           mdbInput mdbValidate>
+                    <label for="defaultForm-email">Title</label>
+                    <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+                    </mdb-error>
+                    <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+                    </mdb-success>
+                </div>
+                <div class="md-form mb-4">
+                    <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                    <textarea  type="text" [formControl]="description" class="md-textarea form-control"
+                           mdbInput mdbValidate></textarea>
+                    <label for="defaultForm-email">Description</label>
+                    <mdb-error *ngIf="description.invalid && (description.dirty || description.touched)">
+                    </mdb-error>
+                    <mdb-success *ngIf="description.valid && (description.dirty || description.touched)">
+                    </mdb-success>
+                </div>
+                <button type="submit" mdbWavesEffect [disabled]="!faqForm.valid" class="btn btn-info  ml-0 float-right z-depth-0 my-4 waves-effect" >
+                    {{buttonName}}
+                    <i class="far fa-paper-plane ml-2"></i>
+                </button>
+                <!-- {{this.faqForm.value | json}} -->
+            </form>
+    </mdb-card-body>
+</mdb-card>

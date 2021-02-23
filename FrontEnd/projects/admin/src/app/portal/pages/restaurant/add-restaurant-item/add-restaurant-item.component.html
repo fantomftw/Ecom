@@ -1,0 +1,131 @@
+    <div class="row">
+        <!-- {{itemData|json}} -->
+
+        
+    </div>
+
+    <h2 class="text-mute">
+        {{heading | uppercase}}
+    </h2>
+    <mdb-card>
+        <mdb-card-body>
+          <!-- This is some text within a panel body. -->
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+            <div class="md-form mt-3 ">
+                <img src="{{baseUrl+imagePath}}" class="col-md-4">
+            </div>
+            <div class="md-form mt-3">
+                <input type="text" formControlName="name" class="form-control" mdbInput mdbValidate/>
+                <label for="materialContactFormName">Item Name</label>
+                <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">Input invalid</mdb-error>
+                <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">Input valid</mdb-success>
+            </div>
+
+            <div class="md-form mt-3">
+                <mdb-select-2 formControlName="cuisine" placeholder="Choose your cuisine" label="Cuisine" (ngModelChange)="getSelectedCuisineValue($event)" [ngModel]="selectedCuisineValue">
+                  <mdb-select-option *ngFor="let option of cuisineList" [value]="option._id">{{ option.name }}</mdb-select-option>
+                </mdb-select-2>
+            </div>
+
+            <div class="md-form mt-3">
+                <textarea type="text" class="form-control md-textarea" formControlName="description"></textarea>
+                <label for="">Item Description</label>
+                <mdb-error *ngIf="description.invalid && (description.dirty || description.touched)">Input invalid</mdb-error>
+                <mdb-success *ngIf="description.valid && (description.dirty || description.touched)">Input valid</mdb-success>
+            </div>
+
+          
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Cost</h2>
+                    </div>
+                    <div class="col-md-6 right-text">
+                        <button class="btn btn-primary" type="button" (click)="addSellingPoint()">Add Cost Varients</button>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="item_cost">
+              <div *ngFor="let item of itemCost.controls; let pointIndex=index" [formGroupName]="pointIndex">
+                <div class="row">
+                    <div class="md-form col-md-5 mb-4">
+                        <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                        <input type="text" formControlName="priceFor" class="form-control"
+                            mdbInput mdbValidate>
+                        <label for="defaultForm-email">Price For</label>
+                    </div>
+                    <div class="md-form col-md-5 mb-4">
+                        <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                        <input type="text" formControlName="price" class="form-control"
+                            mdbInput mdbValidate>
+                        <label for="defaultForm-email">Price</label>
+                    </div>
+                    <div class="md-form col-md-2">
+                        <button type="button" class="btn btn-danger" (click)="deleteSellingPoint(pointIndex)">Delete</button>
+    
+                    </div>
+                </div>
+                <!-- <button type="button" class="btn btn-danger" (click)="addSellingPoint()">Add Selling Point</button> -->
+              </div>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>AddOns</h2>
+                    </div>
+                    <div class="col-md-6 right-text">
+                        <button type="button" class="btn btn-primary" (click)="addSellingPoint1()">Add More Addons</button>
+                    </div>
+                </div>
+            </div>
+            <div formArrayName="addOns">
+              <div *ngFor="let item of addOns.controls; let pointIndex=index" [formGroupName]="pointIndex">
+              <div class="row">
+                <div class="md-form col-md-5 mb-4">
+                    <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                    <input type="text" formControlName="item" class="form-control"
+                           mdbInput mdbValidate>
+                    <label for="defaultForm-email">Item</label>
+                    
+                </div>
+                <div class="md-form col-md-5 mb-4">
+                    <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+                    <input type="text" formControlName="price" class="form-control"
+                           mdbInput mdbValidate>
+                    <label for="defaultForm-email">Price</label>
+                </div>
+                <!-- <label>
+                    Cost Of : <input formControlName="point" />
+                </label> -->
+                <div class="md-form col-md-2">
+                    <button type="button" class="btn btn-danger" (click)="deleteSellingPoint1(pointIndex)">Delete</button>
+
+                </div>
+            </div>
+              </div>
+                
+
+            </div>
+            <input type="hidden" formControlName="_id">
+            <button type="submit" class="btn btn-primary" mdbWavesEffect [disabled]="!productForm.valid" class="btn btn-info  ml-0 float-right z-depth-0 my-4 waves-effect" >
+                Save
+                <i class="far fa-paper-plane ml-2"></i>
+            </button>
+          </form>
+          
+          <!-- {{ this.productForm.value | json }} -->
+          <!-- <button type="submit" [disabled]="!productForm.valid">Submit</button> -->
+          
+        </mdb-card-body>
+      </mdb-card>
+
+      <!-- <div class="md-form mb-4">
+        <input type="text" [formControl]="name" class="form-control"
+               mdbInput mdbValidate>
+        <label for="defaultForm-email">Item Name</label>
+        <mdb-error *ngIf="name.invalid && (name.dirty || name.touched)">
+        </mdb-error>
+        <mdb-success *ngIf="name.valid && (name.dirty || name.touched)">
+        </mdb-success>
+    </div> -->

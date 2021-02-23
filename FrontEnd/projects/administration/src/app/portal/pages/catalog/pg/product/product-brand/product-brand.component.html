@@ -1,0 +1,103 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row mt-3">
+                <h2>All Brands List</h2>
+                <a class="ml-2 mt-2 ml-2" (click)="getList()">
+                    <mdb-icon fas icon="sync"></mdb-icon>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 mx-auto">
+            <div class="row">
+                <div class="col-md-8 ">
+                    <div class="md-form ">
+                        <input type="text" class="form-control" [(ngModel)]="searchText" (keyup)="searchItems()" id="search-input"
+                                mdbInput>
+                        <label for="search-input">Search</label>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4 float-right">
+                    <button mdbBtn color="primary" (click)="openModal()">Add New Brand</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table mdbTable #tableEl="mdbTable" stickyHeader="true" class="z-depth-1" hover="true" exportToCSV="true">
+                <thead class="sticky-top">
+                <tr >
+                  <th *ngFor="let head of headElements; let i = index" [mdbTableSort]="elements" [sortBy]="headElements[i]"
+                      scope="col">{{head | titlecase}} <mdb-icon fas icon="sort"></mdb-icon>
+                  </th>
+                </tr>
+                </thead>
+                <tbody #row *ngIf="tableStatus">
+                <tr mdbTableCol (rowCreated)="onRowCreate($event)" (rowRemoved)="onRowRemove($event)" *ngFor="let el of elements; let i = index">
+                  <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" scope="row">{{i+1}}</th>
+                  <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex" class="red-text" >{{el.name}}</td>
+                  <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.image}}</td>
+                  <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">{{el.createdAt|date}}</td>
+
+
+                  <td class="" *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                    <span class="badge badge-success" *ngIf="el.status==='Active'">
+                      {{el.status}}
+                  </span>
+                  <span class="badge badge-warning" *ngIf="el.status==='InActive'">
+                      {{el.status}}
+                  </span>
+                  <span class="badge badge-danger" *ngIf="el.status==='DeActivate'">
+                      {{el.status}}
+                  </span>
+                  </td>
+                  <td class="" *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                    <div class="row">
+                        <a class="ml-2" (click)="view(el._id)">
+                            <mdb-icon far icon="eye"></mdb-icon>
+                        </a >
+                        <a class="ml-2" (click)="edit(el._id)">
+                            <mdb-icon far icon="edit"></mdb-icon>
+                        </a>
+                        <a class="ml-2" (click)="delete(el._id)">
+                            <mdb-icon far icon="trash-alt"></mdb-icon>
+                        </a>
+                        
+                        <div class="switch" *ngIf="el.status=='Active'; else elseBlock">
+                            <label>
+                              <input type="checkbox" (change)="updateStatus(el._id)" checked>
+                              <span class="lever"></span> 
+                            </label>
+                        </div>
+                        <ng-template #elseBlock>
+                          <div class="switch" >
+                            <label>
+                              <input type="checkbox" (change)="updateStatus(el._id)">
+                              <span class="lever"></span> 
+                            </label>
+                        </div>
+                        </ng-template>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+                <tbody #row *ngIf="!tableStatus">
+                    <tr>
+                        <td colspan="9" class="text-center">
+                            No Data Found
+                        </td>
+                    </tr>
+                  </tbody>
+                <tfoot class="grey lighten-5 w-100">
+                <tr>
+                  <td colspan="10">
+                    <mdb-table-pagination [tableEl]="tableEl" paginationAlign="" [searchDataSource]="elements"></mdb-table-pagination>
+                  </td>
+                </tr>
+                </tfoot>
+              </table>
+        </div>
+    </div>
+  </div>

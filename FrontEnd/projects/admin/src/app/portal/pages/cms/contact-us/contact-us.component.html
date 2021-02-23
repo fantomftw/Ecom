@@ -1,0 +1,110 @@
+<h2 class="text-mute">
+    {{heading | uppercase}}
+</h2>
+<mdb-card>
+    <mdb-card-body>
+      <!-- This is some text within a panel body. -->
+      <form [formGroup]="contactUsForm" (ngSubmit)="onSubmmit()">
+        <input type="hidden" formControlName="_id">
+
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <textarea type="text" [formControl]="address" class="md-textarea form-control"
+                   mdbInput mdbValidate></textarea>
+            <label for="defaultForm-email">Address</label>
+            <mdb-error *ngIf="address.invalid && (address.dirty || address.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="address.valid && (address.dirty || address.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="email" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Email</label>
+            <mdb-error *ngIf="email.invalid && (email.dirty || email.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="email.valid && (email.dirty || email.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="mobile" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Mobile</label>
+            <mdb-error *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="mobile.valid && (mobile.dirty || mobile.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="contact" class="form-control"
+            mdbInput mdbValidate>
+            <label for="defaultForm-email">Landline Number</label>
+            <mdb-error *ngIf="contact.invalid && (contact.dirty || contact.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="contact.valid && (contact.dirty || contact.touched)">
+            </mdb-success>
+        </div>
+        Social Media 
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="facebook" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Facebook</label>
+            <mdb-error *ngIf="facebook.invalid && (facebook.dirty || facebook.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="facebook.valid && (facebook.dirty || facebook.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="twitter" class="form-control"
+                   mdbInput mdbValidate>
+                   
+            <label for="defaultForm-email">Twitter</label>
+            <mdb-error *ngIf="twitter.invalid && (twitter.dirty || twitter.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="twitter.valid && (twitter.dirty || twitter.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="instagram" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Instagram</label>
+            <mdb-error *ngIf="instagram.invalid && (instagram.dirty || instagram.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="instagram.valid && (instagram.dirty || instagram.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="google" class="form-control"
+                   mdbInput mdbValidate>
+                   
+            <label for="defaultForm-email">Google</label>
+            <mdb-error *ngIf="google.invalid && (google.dirty || google.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="google.valid && (google.dirty || google.touched)">
+            </mdb-success>
+        </div>
+        <div class="md-form mb-4">
+            <!-- <mdb-icon fas icon="envelope" class="prefix grey-text"></mdb-icon> -->
+            <input  type="text" [formControl]="telegram" class="form-control"
+                   mdbInput mdbValidate>
+            <label for="defaultForm-email">Telegram</label>
+            <mdb-error *ngIf="telegram.invalid && (telegram.dirty || telegram.touched)">
+            </mdb-error>
+            <mdb-success *ngIf="telegram.valid && (telegram.dirty || telegram.touched)">
+            </mdb-success>
+        </div>
+        <button type="submit" mdbWavesEffect [disabled]="!contactUsForm.valid" class="btn btn-info  ml-0 float-right z-depth-0 my-4 waves-effect" >
+            {{buttonName}}
+            <i class="far fa-paper-plane ml-2"></i>
+        </button>
+        <!-- {{this.contactUsForm.value | json}} -->
+      </form>
+    </mdb-card-body>
+  </mdb-card>

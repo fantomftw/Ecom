@@ -1,0 +1,15 @@
+li a.active {
+    background-color: #007bff;
+}
+li a.active span{
+    color: aliceblue;
+}
+li a.active i{
+    color: aliceblue;
+}
+
+li .sidebar-submenu ul li a.active{
+    color: aliceblue;
+    background-color: #007bff;
+}
+
